@@ -7,7 +7,6 @@ export class App extends Component {
     return (
         <div>
             <h2>This is the main app</h2>
-            {/*<Menu />*/}
             {this.props.children}
         </div>
     );
