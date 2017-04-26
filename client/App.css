@@ -1,0 +1,17 @@
+.container {
+    max-width: 980px;
+    width: 100%;
+    padding: 15px;
+    margin: 0 auto;
+}
+
+.wrapper {
+    background: cyan;
+    border: 2px solid yellow;
+    height: 100px;
+}
+
+.crossed {
+    text-decoration: line-through;
+    color: blue;
+}
