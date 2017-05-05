@@ -19,3 +19,8 @@
 .headerlink {
     color: #fff;
 }
+
+.headerMenu {
+    z-index: 10;
+    position: relative;
+}

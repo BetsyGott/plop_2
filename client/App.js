@@ -7,7 +7,7 @@ export class App extends Component {
   render() {
     return (
         <div>
-          <div className="ui top attached menu">
+          <div className={`ui top attached menu ${styles.headerMenu}`}>
             <Link to="/">
               <div className="item">
                 <img src={require('assets/water.png')}/>

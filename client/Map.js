@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import GoogleMapReact from 'google-map-react';
 
@@ -24,6 +24,15 @@ const greatPlaceStyle = {
   padding: 4
 };
 
+const divSize = {
+  position: 'fixed',
+  top: '0',
+  left: '0',
+  zIndex: '1',
+  width: '100vw',
+  height: '100vh'
+};
+
 class MyGreatPlace extends Component {
   static propTypes = {
     text: PropTypes.string
@@ -40,7 +49,7 @@ class MyGreatPlace extends Component {
   }
 }
 
-class Map extends Component {
+class GoogleMap extends Component {
   static propTypes = {
     center: PropTypes.array,
     zoom: PropTypes.number,
@@ -48,8 +57,8 @@ class Map extends Component {
   };
 
   static defaultProps = {
-    center: [59.938043, 30.337157],
-    zoom: 9,
+    center: [33.6361492, -117.739616],
+    zoom: 18,
     greatPlaceCoords: {lat: 59.724465, lng: 30.080121}
   };
 
@@ -59,18 +68,20 @@ class Map extends Component {
 
   render() {
     return (
-
+        <div style={divSize}>
           <GoogleMapReact
-               apiKey={process.env.GAPI_KEY}
-               center={this.props.center}
-               zoom={this.props.zoom}>
-            <MyGreatPlace lat={59.955413} lng={30.337844} text={'A'} />
-            <MyGreatPlace {...this.props.greatPlaceCoords} text={'B'} />
+              bootstrapURLKeys={{key: process.env.GAPI_KEY}}
+              center={this.props.center}
+              zoom={this.props.zoom}>
+            <MyGreatPlace lat={59.955413} lng={30.337844} text={'A'}/>
+            <MyGreatPlace {...this.props.greatPlaceCoords} text={'B'}/>
           </GoogleMapReact>
+        </div>
+
 
 
     );
   }
 }
 
-export default Map;
+export default GoogleMap;
