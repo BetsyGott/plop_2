@@ -1,0 +1,47 @@
+[
+  {
+    "id": 1,
+    "name": "Edwards Cinema at Irvine Spectrum Center",
+    "coords": {
+      "lat": "33.6506504",
+      "long": "-117.7456957"
+    },
+    "address": {
+      "street": "500 Spectrum Center Dr",
+      "city": "Irvine",
+      "state": "CA",
+      "zip": "92618"
+    }
+
+  },
+  {
+    "id": 2,
+    "name": "Dave & Busters",
+    "coords": {
+      "lat": "33.6508169",
+      "long": "-117.745302"
+    },
+    "address": {
+      "street": "661 Spectrum Center Dr",
+      "city": "Irvine",
+      "state": "CA",
+      "zip": "92618"
+    }
+
+  },
+  {
+    "id": 3,
+    "name": "Public Bathroom at Irvine Spectrum Center",
+    "coords": {
+      "lat": "33.6523626",
+      "long": "-117.7465679"
+    },
+    "address": {
+      "street": "Spectrum Center Dr",
+      "city": "Irvine",
+      "state": "CA",
+      "zip": "92618"
+    }
+
+  }
+]
