@@ -38,7 +38,12 @@ class GoogleMap extends Component {
               center={this.props.center}
               zoom={this.props.zoom}>
             {testData.map( (place) =>
-                <Marker lat={place.coords.lat} lng={place.coords.long} text={place.name}/>
+                <Marker
+                    lat={place.coords.lat}
+                    lng={place.coords.long}
+                    name={place.name}
+                    address={place.address}
+                    key={place.id} />
             )}
           </GoogleMapReact>
         </div>
