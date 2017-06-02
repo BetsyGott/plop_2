@@ -21,6 +21,12 @@
 }
 
 .headerMenu {
-    z-index: 10;
+    z-index: 1000;
     position: relative;
+}
+
+.sideMenu {
+    height: 100vh;
+    padding-top: 80px;
+    width: 400px!important;
 }

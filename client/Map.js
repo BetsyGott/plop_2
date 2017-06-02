@@ -4,7 +4,7 @@ import GoogleMapReact from 'google-map-react';
 import Marker from './Marker';
 import testData from '../server/routes/places.json';
 
-const divSize = {
+const mapSize = {
   position: 'fixed',
   top: '0',
   left: '0',
@@ -16,8 +16,7 @@ const divSize = {
 class GoogleMap extends Component {
   static propTypes = {
     center: PropTypes.array,
-    zoom: PropTypes.number,
-    greatPlaceCoords: PropTypes.any
+    zoom: PropTypes.number
   };
 
   //defaults to Irvine Spectrum Center
@@ -32,18 +31,10 @@ class GoogleMap extends Component {
 
   render() {
     return (
-        <div style={divSize}>
-          <GoogleMapReact
-              bootstrapURLKeys={{key: process.env.GAPI_KEY}}
-              center={this.props.center}
-              zoom={this.props.zoom}>
+        <div style={mapSize}>
+          <GoogleMapReact bootstrapURLKeys={{key: process.env.GAPI_KEY}} center={this.props.center} zoom={this.props.zoom}>
             {testData.map( (place) =>
-                <Marker
-                    lat={place.coords.lat}
-                    lng={place.coords.long}
-                    name={place.name}
-                    address={place.address}
-                    key={place.id} />
+                <Marker lat={place.coords.lat} lng={place.coords.long} name={place.name} key={place.id} />
             )}
           </GoogleMapReact>
         </div>

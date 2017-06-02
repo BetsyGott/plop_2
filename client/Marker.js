@@ -9,13 +9,7 @@ const popupStyle = {
 
 class Marker extends Component {
   static propTypes = {
-    name: PropTypes.string.isRequired,
-    address: PropTypes.shape({
-      street: PropTypes.string,
-      city: PropTypes.string,
-      state: PropTypes.string,
-      zip: PropTypes.string
-    })
+    name: PropTypes.string.isRequired
   };
 
   static defaultProps = {};
