@@ -16,7 +16,10 @@ const mapSize = {
 class GoogleMap extends Component {
   static propTypes = {
     center: PropTypes.array,
-    zoom: PropTypes.number
+    zoom: PropTypes.number,
+    places: PropTypes.array,
+    handleMarkerClick: PropTypes.func,
+    handleMapClick: PropTypes.func
   };
 
   //defaults to Irvine Spectrum Center
@@ -32,9 +35,11 @@ class GoogleMap extends Component {
   render() {
     return (
         <div style={mapSize}>
-          <GoogleMapReact bootstrapURLKeys={{key: process.env.GAPI_KEY}} center={this.props.center} zoom={this.props.zoom}>
-            {testData.map( (place) =>
-                <Marker lat={place.coords.lat} lng={place.coords.long} name={place.name} key={place.id} />
+          <GoogleMapReact bootstrapURLKeys={{key: process.env.GAPI_KEY}}
+                          center={this.props.center} zoom={this.props.zoom} onClick={this.props.handleMapClick}>
+            {this.props.places.map( (place) =>
+                <Marker lat={place.coords.lat} lng={place.coords.long} name={place.name} key={place.id}
+                        onClick={ e => this.props.handleMarkerClick(place, e ) }/>
             )}
           </GoogleMapReact>
         </div>

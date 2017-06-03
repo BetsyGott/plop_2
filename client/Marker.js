@@ -9,14 +9,13 @@ const popupStyle = {
 
 class Marker extends Component {
   static propTypes = {
-    name: PropTypes.string.isRequired
+    name: PropTypes.string.isRequired,
+    onClick: PropTypes.func.isRequired
   };
-
-  static defaultProps = {};
 
   render() {
     return (
-    <Popup hoverable trigger={<Button basic circular color='green' icon='map pin' />}
+    <Popup hoverable trigger={<Button basic circular color='green' icon='map pin' onClick={this.props.onClick}/>}
            position="top center"
            style={popupStyle}>
       <Popup.Header> {this.props.name} </Popup.Header>

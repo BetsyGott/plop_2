@@ -1,93 +1,61 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import { Button, Menu, Icon, Rating, Header, Popup, Comment } from 'semantic-ui-react';
+import testData from '../server/routes/places.json';
 
 import styles from './App.css';
+import PlaceDetailMenu from './PlaceDetailMenu';
 import GoogleMap from './Map';
+
+// this is the topmost level of the map page, so the state (data)
+// and functions that act on the data from the redux containers will connect to this
+// there is another level above this that has the provider/store stuff which will replace this one in the routes
 
 
 export class MapContainer extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      places: testData,
+      selectedPlace: {},
+      detailVisible: false
+    };
+  }
+
+  onMarkerClick(place) {
+
+    console.log("marker click id passed in", place);
+
+    this.setState({
+      selectedPlace: place,
+      detailVisible: true
+    });
+
+    console.log(this.state.selectedPlace);
+  }
+
+  onReviewBtnClick(e) {
+    console.log("review btn target", e.target);
+  }
+
+  onMapClick(){
+
+    console.log("clicked map");
+    if(this.state.detailVisible === true){
+      this.setState({
+        detailVisible: false
+      });
+    }
+
+
+    console.log(this.state.detailVisible);
+  }
+
   render() {
     return (
       <div>
-        <Menu fixed="top" vertical sticky className={`${styles.sideMenu}`}>
-          <Menu.Item>
-            <Menu.Header>
-              <Header as='h2'>Place Name</Header>
-            </Menu.Header>
-            <Menu.Menu>
-              <Menu.Item>
-                <div style={{width: '50%', display: 'inline-block', fontSize: '1.2em'}}>
-                  1234 5th Street <br/>
-                  Irvine, CA 99999
-                </div>
-                <div style={{width: '50%', display: 'inline-block'}}>
-                  <Button primary floated='right'>Review this Bathroom</Button>
-                </div>
-              </Menu.Item>
-            </Menu.Menu>
-          </Menu.Item>
-          <Menu.Item>
-            <span>3.2</span>
-            <div style={{display: 'inline-block',margin: '0 5px'}}>
-              <Rating size="tiny" disabled icon='star' defaultRating={3} maxRating={5} />
-            </div>
-            <span>(Reviewed 15 times)</span>
-          </Menu.Item>
-          <Menu.Item>
-            <Menu.Header>Amenities</Menu.Header>
-            <Menu.Menu>
-              <Menu.Item>
-                <div style={{marginTop: '5px'}}>
-                  <Popup trigger={<Icon circular size='large' name='handicap' />}
-                         size='tiny' content="Handicap stall" position="top center" inverted/>
-                  <Popup trigger={<Icon circular size='large' name='music' />}
-                         size='tiny' content="Music" position="top center" inverted/>
-                  <Popup trigger={<Icon circular size='large' name='users' />}
-                         size='tiny' content="Automatic hand dryers" position="top center" inverted/>
-                  <Popup trigger={<Icon circular size='large' name='users' />}
-                         size='tiny' content="Paper towels" position="top center" inverted/>
-                </div>
-              </Menu.Item>
-            </Menu.Menu>
-          </Menu.Item>
-          <Menu.Item>
-            <Menu.Header>Reviews</Menu.Header>
-            <Menu.Menu>
-              <Menu.Item>
-              <div style={{fontSize: '1.2em'}}>
-                <Comment.Group>
-                  <Comment>
-                    <Comment.Avatar src={require('assets/man-sitting-in-the-bathroom.png')} />
-                    <Comment.Content>
-                      <Comment.Author as='a'>Matt</Comment.Author>
-                      <Comment.Metadata>
-                        <div>Today at 5:42PM</div>
-                      </Comment.Metadata>
-                      <Comment.Text>How artistic!</Comment.Text>
-                    </Comment.Content>
-                  </Comment>
-
-                  <Comment>
-                    <Comment.Avatar src={require('assets/man-sitting-in-the-bathroom.png')} />
-                    <Comment.Content>
-                      <Comment.Author as='a'>Elliot Fu</Comment.Author>
-                      <Comment.Metadata>
-                        <div>Yesterday at 12:30AM</div>
-                      </Comment.Metadata>
-                      <Comment.Text>
-                        <p>This has been very useful for my research. Thanks as well!</p>
-                      </Comment.Text>
-                    </Comment.Content>
-                  </Comment>
-                </Comment.Group>
-              </div>
-              </Menu.Item>
-            </Menu.Menu>
-
-          </Menu.Item>
-        </Menu>
-        <GoogleMap/>
+        <PlaceDetailMenu setVisible={this.state.detailVisible} onReviewBtnClick={(e)=>this.onReviewBtnClick(e)} place={this.state.selectedPlace}/>
+        <GoogleMap places={testData} handleMapClick={()=>this.onMapClick()} handleMarkerClick={(place) => this.onMarkerClick(place)}/>
       </div>
     )
   }
