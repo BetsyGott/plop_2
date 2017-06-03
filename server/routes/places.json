@@ -11,7 +11,10 @@
       "city": "Irvine",
       "state": "CA",
       "zip": "92618"
-    }
+    },
+    "ratings": [3, 3, 4, 5, 4, 4, 5, 2, 3, 2],
+    "amenities": [],
+    "reviews": []
 
   },
   {
@@ -26,7 +29,10 @@
       "city": "Irvine",
       "state": "CA",
       "zip": "92618"
-    }
+    },
+    "ratings": [5, 4, 1, 5, 2, 3, 2],
+    "amenities": [],
+    "reviews": []
 
   },
   {
@@ -41,7 +47,10 @@
       "city": "Irvine",
       "state": "CA",
       "zip": "92618"
-    }
+    },
+    "ratings": [2, 2, 3, 2, 1],
+    "amenities": [],
+    "reviews": []
 
   }
 ]

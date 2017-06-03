@@ -22,7 +22,7 @@ export class MapContainer extends Component {
                   Irvine, CA 99999
                 </div>
                 <div style={{width: '50%', display: 'inline-block'}}>
-                  <Button primary floated='right'>Add a Review</Button>
+                  <Button primary floated='right'>Review this Bathroom</Button>
                 </div>
               </Menu.Item>
             </Menu.Menu>
@@ -58,7 +58,7 @@ export class MapContainer extends Component {
               <div style={{fontSize: '1.2em'}}>
                 <Comment.Group>
                   <Comment>
-                    <Comment.Avatar src='/assets/images/avatar/small/matt.jpg' />
+                    <Comment.Avatar src={require('assets/man-sitting-in-the-bathroom.png')} />
                     <Comment.Content>
                       <Comment.Author as='a'>Matt</Comment.Author>
                       <Comment.Metadata>
@@ -69,7 +69,7 @@ export class MapContainer extends Component {
                   </Comment>
 
                   <Comment>
-                    <Comment.Avatar src='/assets/images/avatar/small/elliot.jpg' />
+                    <Comment.Avatar src={require('assets/man-sitting-in-the-bathroom.png')} />
                     <Comment.Content>
                       <Comment.Author as='a'>Elliot Fu</Comment.Author>
                       <Comment.Metadata>
